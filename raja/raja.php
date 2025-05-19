@@ -1,14 +1,15 @@
+<?php
+    include '../koneksi.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php
-	include 'koneksi.php';
-	$ambil =  $conn->query("SELECT * FROM layanan WHERE id_layanan = '$_GET[id]'"); ?>
-	<?php while ($perlayanan = $ambil->fetch_assoc()){ ?>
 	<meta charset="utf-8"/>
-    <title><?php echo $perlayanan['nama_layanan'] ?></title>
+    <title>Travel</title>
     <!-- bootstrap cdn -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
     <!-- font awesome cdn -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <!-- style.css -->
@@ -17,31 +18,22 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="index.php">PergiTravelling</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav ml-auto">
-				<a class="nav-item nav-link" href="paket.php">Package</a>
-				<a class="nav-item nav-link" href="mice.php">Mice</a>
-				<a class="nav-item nav-link" href="about.php">About Us</a>
-				<a class="nav-item nav-link" href="galery.php">Our Galery</a>
-        <?php
-        session_start();
-        include 'koneksi.php';
-        if (!isset($_SESSION['id_user'])|| !isset($_SESSION['nama_lengkap'])|| !isset($_SESSION['username'])):?>
-          <a class="btn btn-primary tombol" href="login.php">Login</a>
-        <?php else:?>
-          <a class="nav-item nav-link" href="riwayat.php">Riwayat</a>
-          <a class="nav-item nav-link" href="profil.php"><?php echo  $_SESSION['username']; ?></a>
-          <a class="btn btn-primary tombol" href="logout.php">Logout</a>
-        <?php endif?>
-			</div>
-			</div>
-		</div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="../index.php">PergiTravelling</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+		<a class="nav-item nav-link" href="../paket.php">Package</a>
+          <a class="nav-item nav-link" href="../mice.php">Mice</a>
+          <a class="nav-item nav-link" href="../about.php">About Us</a>
+          <a class="nav-item nav-link" href="#">Contact</a>
+          <a class="btn btn-primary tombol" href="../login.php">Login</a>
+        </div>
+        </div>
+      </div>
 	</nav>
 	<!-- jumbo -->
 	<div class="jumbotron jumbotron-fluid">
@@ -50,24 +42,24 @@
       </div>
     </div>
 	<!-- akhir jumbo -->
-  
+
 	<div class="services">
-    <h1><?php echo $perlayanan['nama_layanan'] ?></h1>
-          <div class="container">
-              <h6><?php echo $perlayanan['desk'] ?></h6>
-          </div>
+		<h1>4D3N EXOTIC RAJA AMPAT</h1>
+        <div class="container">
+            <h6>Kepulauan Raja Ampat merupakan rangkaian empat gugusan pulau yang berdekatan dan berlokasi di barat bagian Kepala Burung Pulau Papua. Secara administrasi, gugusan ini berada di bawah Kabupaten Raja Ampat, Provinsi Papua Barat.</h6>
+        </div>
+
 		<h1>Rangkaian Perjalanan Anda</h1>
 	</div>
-      <div class="hari">
-      <div class="rangka">
+	<div class="rangka">
 		<div class="container">
 			<div class="row workingspace">
 				<div class="col-lg-9">
-					<h6><?php echo $perlayanan['hari1'] ?></h6>
-					<p><?php echo $perlayanan['desk1'] ?></p>
+					<h6>Day 01: KETIBAAN SORONG - WAISAI</h6>
+					<p>Tiba Di Bandara Domine Eduard Osok, Sorong. Anda akan diantar untuk makan pagi (biaya sendiri), lalu menuju ke Pelabuhan untuk menyebrang ke Waisai menggunakan kapal regular selama kurang lebih 2 jam. Sesampainya di Waisai, Anda akan diantar menuju Resort untuk makan siang. Check in dan free program. Makan malam di Resort.</p>
 				</div>
 				<div class="col-lg-3">
-					<img src="admin/uploads/<?php echo $perlayanan['file_name'] ?>" alt="workingspace" class="img-fluid"/>
+					<img src="../img/raja.jpg" alt="workingspace" class="img-fluid"/>
 				</div>
 			</div>
 		</div>
@@ -76,11 +68,11 @@
 		<div class="container">
 			<div class="row workingspace">
 				<div class="col-lg-9">
-					<h6><?php echo $perlayanan['hari2'] ?></h6>
-					<p><?php echo $perlayanan['desk2'] ?></p>
+					<h6>Day 02: WAYAG TOUR</h6>
+					<p>Setelah makan pagi, Anda akan diajak menuju Pianemo “Little Wayag” dengan speed boat untuk hunting foto dan melihat keindahan gugusan karang, dilanjutkan ke Telaga Bintang. Kemudian menuju Arborek untuk snorkeling. Makan siang dengan lunch box. Setelah itu Anda akan diantar menuju Sawinggrai untuk fish feeding, lalu menuju Pasir Timbul. Kembali ke Resort untuk beristirahat dan makan malam.</p>
 				</div>
 				<div class="col-lg-3">
-					<img src="admin/uploads/<?php echo $perlayanan['file_name'] ?>" alt="workingspace" class="img-fluid"/>
+					<img src="../img/raja.jpg" alt="workingspace" class="img-fluid"/>
 				</div>
 			</div>
 		</div>
@@ -89,11 +81,11 @@
 		<div class="container">
 			<div class="row workingspace">
 				<div class="col-lg-9">
-					<h6><?php echo $perlayanan['hari3'] ?></h6>
-					<p><?php echo $perlayanan['desk3'] ?></p>
+					<h6>Day 03: SAWANDAREK TOUR</h6>
+					<p>Setelah sarapan pagi, Anda akan diantar mengunjungi Sawandarek, lalu menuju Yenbuba Jetty, kemudian makan siang. Selanjutnya menuju Friwen Wall untuk snorkeling dan bermain di Friwen Pantai. Kembali ke Resort untuk istirahat dan makan malam.</p>
 				</div>
 				<div class="col-lg-3">
-				
+					<img src="../img/raja.jpg" alt="workingspace" class="img-fluid"/>
 				</div>
 			</div>
 		</div>
@@ -102,16 +94,16 @@
 		<div class="container">
 			<div class="row workingspace">
 				<div class="col-lg-9">
-					<h6><?php echo $perlayanan['hari4'] ?></h6>
-					<p><?php echo $perlayanan['desk4'] ?></p>
+					<h6>Day 04: KEBERANGKATAN SORONG</h6>
+					<p>Setelah sarapan pagi dan bersiap-siap untuk check out Resort. Jam 8 pagi menuju Pelabuhan Waisai untuk menuju Sorong. Sesampainya di Sorong Anda akan diantar menuju tempat oleh-oleh dan pengantaran ke Bandara untuk kembali ke kota asal. Perjalanan selesai. Sampai berjumpa kembali di TOUR selanjutnya.</p>
 				</div>
 				<div class="col-lg-3">
-				
+					<img src="../img/raja.jpg" alt="workingspace" class="img-fluid"/>
 				</div>
 			</div>
 		</div>
 	</div>
-      </div>
+	
 	<div class="services">
 		<h1>What's Included</h1>
 	</div>
@@ -123,20 +115,20 @@
 					<section>
 						<div>
 							<ul class="check-list">
-							<li><?php echo $perlayanan['inc1'] ?></li>
-							<li><?php echo $perlayanan['inc2'] ?></li>
-							<li><?php echo $perlayanan['inc3'] ?></li>
-							<li><?php echo $perlayanan['inc4'] ?></li>
-							<li><?php echo $perlayanan['inc5'] ?></li>
-							<li><?php echo $perlayanan['inc6'] ?></li>
-							<li><?php echo $perlayanan['inc7'] ?></li>
+							<li>Akomodasi 1 (satu) kamar menignap dengan sarapan pagi sesuai pilihan hotel </li>
+							<li>Tour dan makan sesuai itinerari</li>
+							<li>Transportasi sesuai jumlah peserta </li>
+							<li>Jeep di Bromo (maks. 5 orang) </li>
+							<li>Lokal Guide berbahasa Indonesia </li>
+							<li>Air mineral 1 botol/orang/hari </li>
+							<li>Harga WNI </li>
 							</ul>
 						</div>
 					</section>
 					</div>
 					<div class="col-lg-3"></div>
 					<div class="col-lg-4">
-						<img src="img/inc.jpg" alt="workingspace" class="img-fluid"/>
+						<img src="../img/bajo.jpg" alt="workingspace" class="img-fluid"/>
 					</div>
 				</div>
 		</div>
@@ -147,46 +139,40 @@
 				List Harga
 			</div>
 			<div class="card-body">
-	<div class="rangka">
+			<div class="rangka">
 		<div class="container">
 			<div class="row workingspace">
 				<div class="col-lg-3">
 					<h6>Adult Twin Share</h6>
 				</div>
 				<div class="col-lg-3">
-					<p>IDR <?php echo number_format($perlayanan['harga1'])  ?></p>
+				 <p>IDR 12,680,000</p>
 				</div>
 				<div class="col-lg-6"></div>
 				<div class="col-lg-3">
 					<h6>Child Twin Share</h6>
 				</div>
 				<div class="col-lg-3">
-				<p>IDR <?php echo number_format($perlayanan['harga2'])  ?></p>
+				 <p>IDR 12,680,000</p>
 				</div>
 				<div class="col-lg-3"></div>
-				<div class="col-lg-3"></div>
-				<div class="col-lg-3">
-					<h6>Child Without Bed</h6>
-				</div>
-				<div class="col-lg-3">
-				<p>IDR <?php echo number_format($perlayanan['harga3'])  ?></p>
-				</div>
-				<div class="col-lg-6"></div>
+				<div class="col-lg-3"><a type="button" class="btn btn-primary" href="book.php">BOOK NOW</a></div>
 				<div class="col-lg-3">
 					<h6>Child With Extra Bed</h6>
 				</div>
 				<div class="col-lg-3">
-				<p>IDR <?php echo number_format($perlayanan['harga4'])  ?></p>
+				 <p>IDR 11,680,000</p>
 				</div>
 				<div class="col-lg-6"></div>
-        <div class="container"><a class="btn btn-primary" href="booking.php?id=<?php echo $perlayanan['id_layanan'] ?>">BOOK NOW</a></div>
+				
 			</div>
 			</div>
 		</div>
 			</div>
 		</div>
+
 	</div>
-  <?php } ?>
+
 	<!-- footer -->
 	<footer class="footer-distributed">
 			<div class="footer-left">
